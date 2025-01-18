@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Typography, Button, Box, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import LOGOMARK_WHITE from "../assets/LOGOMARK_WHITE.png"; // Replace with your logo path
 
 const Navbar = () => {
   const sections = ["Home", "Build Your PC", "Pre-Built PCs", "About Us", "Contact Us"];
@@ -41,9 +42,9 @@ const Navbar = () => {
       position="fixed"
       elevation={4}
       sx={{
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
         backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(255, 215, 0, 0.8)",
+        borderBottom: "2px solid rgba(255, 215, 0, 0.7)",
         top: "1rem",
         left: "50%",
         transform: "translateX(-50%)",
@@ -54,22 +55,43 @@ const Navbar = () => {
           sm: "80%",
           md: "70%",
         },
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
       }}
     >
       <Toolbar>
-        <Typography
-          variant="h6"
+        {/* Logo and Title */}
+        <Box
           sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
             flexGrow: 1,
-            fontWeight: "bold",
-            fontFamily: "'Roboto', sans-serif",
-            color: "#FFD700",
           }}
         >
-          The Computer Community
-        </Typography>
+          <Box
+            component="img"
+            src={LOGOMARK_WHITE}
+            alt="Logo"
+            sx={{
+              height: "40px",
+              width: "auto",
+            }}
+          />
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "'Libre Baskerville', serif",
+              color: "#FFD700",
+              textShadow: "0px 4px 6px rgba(255, 215, 0, 0.6)",
+              fontSize: "1.5rem",
+            }}
+          >
+            The Computer Community
+          </Typography>
+        </Box>
 
+        {/* Navigation Buttons */}
         <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2 }}>
           {sections.map((section) => (
             <Button
@@ -78,10 +100,15 @@ const Navbar = () => {
               sx={{
                 textTransform: "capitalize",
                 fontWeight: "bold",
-                color:
-                  activeSection === section ? "#FFD700" : "#FFFFFF",
-                borderBottom:
-                  activeSection === section ? "2px solid #FFD700" : "none",
+                fontFamily: "'Manrope', sans-serif",
+                color: activeSection === section ? "#FFD700" : "#FFFFFF",
+                borderBottom: activeSection === section ? "2px solid #FFD700" : "none",
+                textShadow:
+                  activeSection === section ? "0px 4px 6px rgba(255, 215, 0, 0.6)" : "none",
+                "&:hover": {
+                  color: "#FFD700",
+                  textShadow: "0px 4px 6px rgba(255, 215, 0, 0.8)",
+                },
               }}
             >
               {section}
@@ -89,10 +116,14 @@ const Navbar = () => {
           ))}
         </Box>
 
+        {/* Hamburger Menu Icon for Small Screens */}
         <IconButton
           edge="end"
           color="inherit"
-          sx={{ display: { xs: "block", sm: "none" }, color: "#FFFFFF" }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            color: "#FFFFFF",
+          }}
         >
           <MenuIcon />
         </IconButton>
