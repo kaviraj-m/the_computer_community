@@ -144,7 +144,7 @@ const CategoriesSection = () => {
                   <Typography
                     variant="body1"
                     sx={{
-                      fontFamily: "'Manrope', sans-serif", // Apply Manrope to the description
+                      fontFamily: "'Manrope', sans-serif", 
                       color: "#ccc",
                       lineHeight: 1.6,
                       mb: 3,

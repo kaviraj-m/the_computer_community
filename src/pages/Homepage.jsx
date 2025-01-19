@@ -5,8 +5,8 @@ import FeaturesSection from '../components/FeaturesSection';
 import CategoriesSection from '../components/CategoriesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import BrandsSection from '../components/BrandsSection';
-import Footer from '../components/Footer';
-
+import DonationSection from '../components/DonationSection';
+import BuildFormSection from '../components/BuildFormSection';
 const Homepage = () => {
   return (
     <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
@@ -16,7 +16,8 @@ const Homepage = () => {
       <CategoriesSection />
       <TestimonialsSection />
       <BrandsSection />
-      <Footer />
+      <BuildFormSection/>
+      <DonationSection />
     </div>
   );
 };

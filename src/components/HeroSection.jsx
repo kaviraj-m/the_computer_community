@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import animationGif from '../assets/animation.gif'; // Replace with your GIF path
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'; // Import WhatsApp icon
+import animationGif from '../assets/animation.gif'; 
+import WhatsAppIcon from '@mui/icons-material/WhatsApp'; 
 
 import '@fontsource/libre-baskerville';
 import '@fontsource/manrope';
