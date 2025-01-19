@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import { Box, Typography, Grid, Paper } from "@mui/material";
 import { styled } from "@mui/system";
 import VerifiedIcon from "@mui/icons-material/Verified";
@@ -7,11 +7,8 @@ import BuildIcon from "@mui/icons-material/Build";
 import StarIcon from "@mui/icons-material/Star";
 import SecurityIcon from "@mui/icons-material/Security";
 import InsightsIcon from "@mui/icons-material/Insights";
-
-// Import background image
 import backgroundImage from "../assets/background_image.jpg";
 
-// Feature data
 const features = [
   {
     title: "Price Match Guarantee",
@@ -50,13 +47,14 @@ const FeatureCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   textAlign: "center",
   borderRadius: "16px",
-  backgroundColor: "rgba(255, 255, 255, 0.2)", // Reduced opacity for better design
+  backgroundColor: "rgba(255, 255, 255, 0.2)", 
   color: "#FFF",
   boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease",
   "&:hover": {
-    transform: "translateY(-8px)",
+    transform: "translateY(-12px)",
     boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.4)",
+    opacity: 1, 
   },
 }));
 
@@ -70,11 +68,11 @@ const FeaturesSection = () => {
         background: `url(${backgroundImage}) no-repeat center/cover`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backdropFilter: "blur(12px)", // Increased blur effect
+        backdropFilter: "blur(12px)",
         color: "#FFF",
       }}
     >
-      {/* Overlay for better text readability */}
+      
       <Box
         sx={{
           position: "absolute",
@@ -82,12 +80,12 @@ const FeaturesSection = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjusted the overlay transparency
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // Slightly more transparent overlay
           zIndex: 1,
         }}
       ></Box>
 
-      {/* Content Section */}
+      
       <Box sx={{ position: "relative", zIndex: 2, maxWidth: "1200px", margin: "0 auto" }}>
         <Typography
           variant="h3"
@@ -103,11 +101,21 @@ const FeaturesSection = () => {
           Why Choose The Computer Community?
         </Typography>
 
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
           {features.map((feature, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <FeatureCard>
-                {feature.icon}
+                <Box
+                  sx={{
+                    marginBottom: 3,
+                    transition: "transform 0.3s ease",
+                    "&:hover": {
+                      transform: "rotate(360deg)", // Rotate the icon on hover for effect
+                    },
+                  }}
+                >
+                  {feature.icon}
+                </Box>
                 <Typography
                   variant="h6"
                   sx={{
@@ -127,6 +135,7 @@ const FeaturesSection = () => {
                     color: "#CCC",
                     fontFamily: "'Manrope', sans-serif",
                     lineHeight: 1.5,
+                    textAlign: "center", // Center the description text
                   }}
                 >
                   {feature.description}

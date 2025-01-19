@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 
 const Homepage = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh' }}>
       <Navbar />
       <HeroSection />
       <FeaturesSection />

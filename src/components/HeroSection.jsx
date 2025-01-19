@@ -4,7 +4,6 @@ import { styled } from '@mui/system';
 import animationGif from '../assets/animation.gif'; // Replace with your GIF path
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'; // Import WhatsApp icon
 
-// Adding Google Fonts
 import '@fontsource/libre-baskerville';
 import '@fontsource/manrope';
 
@@ -27,7 +26,6 @@ const HeroSection = () => {
     },
   }));
 
-  // WhatsApp Chat Link
   const whatsappLink = `https://wa.me/919799769699`;
 
   return (
@@ -71,13 +69,12 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Text Section (left side 70%) */}
       <Box
         sx={{
-          flex: 7,  // 70% of the space
+          flex: 7,  
           textAlign: { xs: 'center', lg: 'left' },
           marginBottom: { xs: '30px', lg: '0' },
-          zIndex: 10, // Ensure text is on top of background
+          zIndex: 10,
         }}
       >
         <Typography
@@ -88,7 +85,7 @@ const HeroSection = () => {
             color: '#FF9800',
             mb: 2,
             lineHeight: 1.2,
-            fontFamily: 'Libre Baskerville, serif', // Title font
+            fontFamily: 'Libre Baskerville, serif', 
             textShadow: '0px 4px 10px rgba(0, 0, 0, 0.7)',
           }}
         >
@@ -101,7 +98,7 @@ const HeroSection = () => {
             color: '#FF9800',
             mb: 2,
             lineHeight: 1.4,
-            fontFamily: 'Manrope, sans-serif', // Subtitle font
+            fontFamily: 'Manrope, sans-serif', 
             textShadow: '0px 2px 6px rgba(0, 0, 0, 0.5)',
           }}
         >
@@ -158,7 +155,7 @@ const HeroSection = () => {
             Explore Pre-Built PCs
           </StyledButton>
           
-          {/* WhatsApp Button near the other buttons */}
+          
           <a
             href={whatsappLink}
             target="_blank"
@@ -167,7 +164,7 @@ const HeroSection = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: '#25D366', // WhatsApp green color
+              backgroundColor: '#25D366', 
               padding: '12px 30px',
               borderRadius: '25px',
               boxShadow: '0 10px 20px rgba(0, 0, 0, 0.3)',
@@ -185,10 +182,10 @@ const HeroSection = () => {
         </Box>
       </Box>
 
-      {/* GIF Section (right side 30%) */}
+      
       <Box
         sx={{
-          flex: 3,  // 30% of the space
+          flex: 3,  
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
