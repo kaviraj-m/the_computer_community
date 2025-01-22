@@ -149,7 +149,7 @@ const HeroSection = () => {
           <StyledButton
             variant="outlined"
             color="warning"
-            onClick={() => window.location.href = '/pre-built'}
+            onClick={() => window.location.href = '/prebuilt'}
             sx={{ minWidth: '200px' }}
           >
             Explore Pre-Built PCs

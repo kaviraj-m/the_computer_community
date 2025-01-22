@@ -16,7 +16,6 @@ const Homepage = () => {
       <CategoriesSection />
       <TestimonialsSection />
       <BrandsSection />
-      <BuildFormSection/>
       <DonationSection />
     </div>
   );
