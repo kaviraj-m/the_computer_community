@@ -11,7 +11,7 @@ import ContactUsPage from './pages/ContactUsPage';
 const App = () => {
   return (
     <Router>
-      <div>
+      <div style={{ backgroundColor: '#000', minHeight: '100vh' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

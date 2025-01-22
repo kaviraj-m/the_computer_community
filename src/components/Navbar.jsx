@@ -53,7 +53,7 @@ const Navbar = () => {
         borderRadius: "16px",
         padding: "0.5rem 1rem",
         width: {
-          xs: "90%",
+          xs: "90%", // Reduced width for mobile
           sm: "80%",
           md: "70%",
         },
@@ -77,6 +77,7 @@ const Navbar = () => {
               color: "#FFD700",
               textShadow: "0px 4px 6px rgba(255, 215, 0, 0.6)",
               fontSize: "1.5rem",
+              display: { xs: "none", sm: "block" }, // Hide title on mobile
             }}
           >
             The Computer Community

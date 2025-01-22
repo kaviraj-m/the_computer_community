@@ -3,43 +3,45 @@ import { Box, Container, Typography, Grid, IconButton, Divider, Button, Link } f
 import { styled } from '@mui/system';
 import { Facebook, Twitter, Instagram, LinkedIn, YouTube } from '@mui/icons-material';
 
-// Footer Styles
 const FooterWrapper = styled(Box)(({ theme }) => ({
-  backgroundColor: '#101010', // Dark background for depth
+  background: 'linear-gradient(135deg, #101010 0%, #212121 100%)',
   color: '#fff',
   padding: '60px 0',
   textAlign: 'center',
   position: 'relative',
   marginTop: '40px',
-  boxShadow: '0px -5px 20px rgba(0,0,0,0.5)', // More depth with shadow
+  boxShadow: '0px -5px 20px rgba(0,0,0,0.5)',
+  borderTopLeftRadius: '20px',
+  borderTopRightRadius: '20px',
   [theme.breakpoints.down('sm')]: {
     padding: '40px 20px',
   },
 }));
 
 const FooterLink = styled(Link)(({ theme }) => ({
-  color: '#FFD700', // Gold for links
+  color: '#FFD700',
   textDecoration: 'none',
-  margin: '0 20px',
+  margin: '10px 0',
   fontSize: '18px',
   fontWeight: '600',
   letterSpacing: '0.5px',
   transition: 'all 0.3s ease',
+  display: 'block',
   '&:hover': {
     color: '#fff',
     textDecoration: 'underline',
-    transform: 'scale(1.05)', // Zoom effect on hover
+    transform: 'scale(1.05)',
   },
 }));
 
 const SocialIconButton = styled(IconButton)(({ theme }) => ({
-  color: '#FFD700',
   margin: '10px',
-  fontSize: '30px',
+  fontSize: '35px',
   transition: 'all 0.3s ease',
   '&:hover': {
-    color: '#fff',
-    transform: 'scale(1.1)', // Zoom effect for icons
+    transform: 'scale(1.2)',
+    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+    borderRadius: '50%',
   },
 }));
 
@@ -51,6 +53,7 @@ const ChannelButton = styled(Button)(({ theme }) => ({
   textTransform: 'uppercase',
   fontWeight: '600',
   borderRadius: '30px',
+  marginTop: '20px',
   '&:hover': {
     backgroundColor: '#fff',
     color: '#101010',
@@ -63,7 +66,6 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Container maxWidth="lg">
-        {/* Quick Links Section */}
         <Grid container justifyContent="center" spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <Typography variant="h6" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '20px' }}>
@@ -77,48 +79,41 @@ const Footer = () => {
               <FooterLink href="/contact">Contact Us</FooterLink>
             </div>
           </Grid>
-
-          {/* Social Media Section */}
           <Grid item xs={12} sm={6} md={4}>
             <Typography variant="h6" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '20px' }}>
               Follow Us
             </Typography>
             <div>
-              <SocialIconButton href="https://facebook.com" aria-label="Facebook">
+              <SocialIconButton href="https://facebook.com" aria-label="Facebook" sx={{ color: '#3b5998' }}>
                 <Facebook />
               </SocialIconButton>
-              <SocialIconButton href="https://twitter.com" aria-label="Twitter">
+              <SocialIconButton href="https://twitter.com" aria-label="Twitter" sx={{ color: '#00acee' }}>
                 <Twitter />
               </SocialIconButton>
-              <SocialIconButton href="https://instagram.com" aria-label="Instagram">
+              <SocialIconButton href="https://instagram.com" aria-label="Instagram" sx={{ color: '#C13584' }}>
                 <Instagram />
               </SocialIconButton>
-              <SocialIconButton href="https://linkedin.com" aria-label="LinkedIn">
+              <SocialIconButton href="https://linkedin.com" aria-label="LinkedIn" sx={{ color: '#0e76a8' }}>
                 <LinkedIn />
               </SocialIconButton>
-              <SocialIconButton href="https://youtube.com/c/TheComputerCommunity" aria-label="YouTube">
+              <SocialIconButton href="https://youtube.com/c/TheComputerCommunity" aria-label="YouTube" sx={{ color: '#FF0000' }}>
                 <YouTube />
               </SocialIconButton>
             </div>
           </Grid>
-
-          {/* YouTube Channel Section */}
           <Grid item xs={12} sm={12} md={4}>
             <Typography variant="h6" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '20px' }}>
               Join Our YouTube Community
             </Typography>
             <Typography variant="body2" sx={{ color: '#fff', marginBottom: '20px' }}>
-              Don't miss our latest PC builds, tech tips, and reviews! Subscribe to our YouTube channel for exciting content.
+              Stay updated with the latest PC builds, tech tips, and reviews! Subscribe to our YouTube channel for exciting content and tutorials.
             </Typography>
             <ChannelButton href="https://youtube.com/c/TheComputerCommunity" target="_blank">
               Visit Our Channel
             </ChannelButton>
           </Grid>
         </Grid>
-
         <Divider sx={{ my: 4, borderColor: '#FFD700' }} />
-
-        {/* Copyright Section */}
         <Typography variant="body2" sx={{ color: '#fff', fontSize: '14px', fontWeight: '300' }}>
           © 2025 The Computer Community. All rights reserved.
         </Typography>

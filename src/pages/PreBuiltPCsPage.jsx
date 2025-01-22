@@ -3,7 +3,6 @@ import HeroSection2 from '../components/HeroSection2';
 import CategoryHighlights from '../components/CategoryHighlights';
 import FilterAndPCSection from '../components/FilterAndPCSection';
 import ComparisonHelper from '../components/ComparisonHelper';
-import FeaturedBuilds from '../components/FeaturedBuilds';
 import SupportSection from '../components/SupportSection';
 
 const PreBuiltPCsPage = () => {
@@ -13,7 +12,6 @@ const PreBuiltPCsPage = () => {
       <CategoryHighlights />
       <FilterAndPCSection />
       <ComparisonHelper />
-      <FeaturedBuilds />
       <SupportSection />
     </div>
   );

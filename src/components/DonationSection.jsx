@@ -2,8 +2,9 @@ import React from 'react';
 import { Box, Container, Typography, Grid, Button, Link, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import { FaDonate } from 'react-icons/fa';  
+
 const DonationSectionWrapper = styled(Box)(({ theme }) => ({
-  background: 'linear-gradient(135deg, #1c1c1c 40%, #333 100%)',
+  background: 'black',
   color: '#fff',
   padding: '80px 0',
   textAlign: 'center',

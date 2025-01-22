@@ -7,18 +7,20 @@ const MapSection = () => {
       sx={{
         marginTop: '60px',
         padding: '40px',
-        backgroundColor: '#f9f9f9',
+        backgroundColor: '#000', 
         borderRadius: '12px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)',
+        color: '#FFD700', 
       }}
     >
       <Typography
         variant="h4"
         sx={{
           fontWeight: 'bold',
-          color: '#333',
           textAlign: 'center',
           marginBottom: '24px',
+          textTransform: 'uppercase',
+          letterSpacing: '2px',
         }}
       >
         Visit Our Studio
@@ -28,9 +30,10 @@ const MapSection = () => {
         variant="body1"
         sx={{
           textAlign: 'center',
-          color: '#555',
+          color: '#ddd', 
           marginBottom: '32px',
-          lineHeight: 1.6,
+          lineHeight: 1.7,
+          fontSize: '1.1rem',
         }}
       >
         Find us at the heart of Kilpauk, Chennai. We’re always excited to welcome you! Plan your visit and experience our creative space.
@@ -43,7 +46,8 @@ const MapSection = () => {
           height: '400px',
           overflow: 'hidden',
           borderRadius: '8px',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
+          marginBottom: '24px',
         }}
       >
         <iframe
@@ -58,21 +62,27 @@ const MapSection = () => {
         ></iframe>
       </Box>
 
-      <Box sx={{ textAlign: 'center', marginTop: '24px' }}>
+      <Box sx={{ textAlign: 'center' }}>
         <Button
           variant="contained"
-          color="primary"
           sx={{
             textTransform: 'none',
             fontWeight: 'bold',
-            padding: '10px 20px',
+            padding: '12px 24px',
             borderRadius: '8px',
-            backgroundColor: '#007BFF',
+            backgroundColor: '#FFD700', 
+            color: '#000', 
+            fontSize: '1rem',
             '&:hover': {
-              backgroundColor: '#0056b3',
+              backgroundColor: '#e5c100', 
             },
           }}
-          onClick={() => window.open('https://maps.google.com/maps?daddr=3, Lock St, Sanyasipuram, Kilpauk, Chennai, Tamil Nadu 600010', '_blank')}
+          onClick={() =>
+            window.open(
+              'https://maps.google.com/maps?daddr=3, Lock St, Sanyasipuram, Kilpauk, Chennai, Tamil Nadu 600010',
+              '_blank'
+            )
+          }
         >
           Get Directions
         </Button>

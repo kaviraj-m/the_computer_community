@@ -42,7 +42,7 @@ const features = [
   },
 ];
 
-// Styled Paper for individual feature cards
+
 const FeatureCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   textAlign: "center",
@@ -80,7 +80,7 @@ const FeaturesSection = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Slightly more transparent overlay
+          backgroundColor: "rgba(0, 0, 0, 0.5)", 
           zIndex: 1,
         }}
       ></Box>
@@ -94,7 +94,7 @@ const FeaturesSection = () => {
             fontWeight: "bold",
             color: "#FFD700",
             mb: 6,
-            textShadow: "0px 0px 6px rgba(255, 215, 0, 0.4)", // Softer text shadow
+            textShadow: "0px 0px 6px rgba(255, 215, 0, 0.4)", 
             fontFamily: "'Libre Baskerville', serif",
           }}
         >
@@ -110,7 +110,7 @@ const FeaturesSection = () => {
                     marginBottom: 3,
                     transition: "transform 0.3s ease",
                     "&:hover": {
-                      transform: "rotate(360deg)", // Rotate the icon on hover for effect
+                      transform: "rotate(360deg)", 
                     },
                   }}
                 >
@@ -122,7 +122,7 @@ const FeaturesSection = () => {
                     mt: 2,
                     fontWeight: "bold",
                     color: "#FFD700",
-                    textShadow: "0px 0px 4px rgba(255, 215, 0, 0.4)", // Softer text shadow
+                    textShadow: "0px 0px 4px rgba(255, 215, 0, 0.4)", 
                     fontFamily: "'Manrope', sans-serif",
                   }}
                 >
@@ -135,7 +135,7 @@ const FeaturesSection = () => {
                     color: "#CCC",
                     fontFamily: "'Manrope', sans-serif",
                     lineHeight: 1.5,
-                    textAlign: "center", // Center the description text
+                    textAlign: "center", 
                   }}
                 >
                   {feature.description}

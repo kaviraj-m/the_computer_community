@@ -11,13 +11,11 @@ const AboutUs = () => {
   return (
     <Box>
       <HeroSection3 />
-      <Container>
         <CompanyIntroduction />
         <OurMission />
         <OurValues />
         <MeetTheTeam />
         <HowWeWork />
-      </Container>
     </Box>
   );
 };

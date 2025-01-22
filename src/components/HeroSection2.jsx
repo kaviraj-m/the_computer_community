@@ -31,7 +31,7 @@ const HeroSection = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.65)", // Dark overlay
+          backgroundColor: "rgba(0, 0, 0, 0.65)", 
           zIndex: 1,
         }}
       />
