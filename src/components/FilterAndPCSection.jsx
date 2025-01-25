@@ -12,49 +12,7 @@ import {
   Stack,
   Modal,
 } from "@mui/material";
-import computer2 from "../assets/computer2.webp";
-import computer3 from "../assets/computer3.webp";
-import computer4 from "../assets/computer4.webp";
-import computer5 from "../assets/computer5.webp";
-
-const pcs = [
-  {
-    title: "Gaming Beast",
-    image: computer2,
-    specs: "Intel i9, NVIDIA RTX 4090, 32GB RAM, 1TB SSD",
-    category: "gaming",
-    brand: "intel",
-    price: 249999,
-    details: "This is the ultimate gaming PC for enthusiasts.",
-  },
-  {
-    title: "Budget Build",
-    image: computer3,
-    specs: "Intel i5, GTX 1650, 16GB RAM, 512GB SSD",
-    category: "budget",
-    brand: "intel",
-    price: 54999,
-    details: "Perfect for entry-level gamers and students.",
-  },
-  {
-    title: "Workstation Pro",
-    image: computer4,
-    specs: "AMD Ryzen 9, RTX 3080, 64GB RAM, 2TB SSD",
-    category: "productivity",
-    brand: "amd",
-    price: 299999,
-    details: "Designed for creators and professionals.",
-  },
-  {
-    title: "Streaming King",
-    image: computer5,
-    specs: "AMD Ryzen 7, RTX 3070, 32GB RAM, 1TB SSD",
-    category: "gaming",
-    brand: "amd",
-    price: 179999,
-    details: "Ideal for streamers and multitaskers.",
-  },
-];
+import pcs from "../data/pcData"; // Import the data file
 
 const FilterAndPCSection = () => {
   const [category, setCategory] = useState("");
@@ -62,6 +20,7 @@ const FilterAndPCSection = () => {
   const [priceRange, setPriceRange] = useState([30000, 300000]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedPC, setSelectedPC] = useState(null);
+  const [visibleRows, setVisibleRows] = useState(2); // Show 2 rows initially (8 PCs)
 
   const handleOpenModal = (pc) => {
     setSelectedPC(pc);
@@ -80,6 +39,12 @@ const FilterAndPCSection = () => {
       pc.price >= priceRange[0] &&
       pc.price <= priceRange[1]
   );
+
+  const handleShowMore = () => {
+    setVisibleRows((prev) => prev + 2); // Show 2 more rows (8 PCs) when clicked
+  };
+
+  const visiblePCs = visibleRows * 4; // Total visible PCs based on rows (4 PCs per row)
 
   return (
     <Box sx={{ backgroundColor: "#000", color: "#fff", minHeight: "100vh" }}>
@@ -123,6 +88,7 @@ const FilterAndPCSection = () => {
             <MenuItem value="gaming">Gaming</MenuItem>
             <MenuItem value="productivity">Productivity</MenuItem>
             <MenuItem value="budget">Budget</MenuItem>
+            <MenuItem value="office">Office</MenuItem>
           </Select>
           <Select
             value={brand}
@@ -167,21 +133,24 @@ const FilterAndPCSection = () => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns: {
+            xs: "repeat(1, 1fr)", // 1 PC per row on mobile
+            sm: "repeat(2, 1fr)", // 2 PCs per row on small screens
+            md: "repeat(3, 1fr)", // 3 PCs per row on medium screens
+            lg: "repeat(4, 1fr)", // 4 PCs per row on large screens
+          },
           gap: "20px",
           padding: "20px",
         }}
       >
         {filteredPCs.length > 0 ? (
-          filteredPCs.map((pc, index) => (
+          filteredPCs.slice(0, visiblePCs).map((pc, index) => (
             <Card
               key={index}
               sx={{
                 backgroundColor: "#1a1a1a",
                 color: "#fff",
-                maxWidth: 300,
-                margin: "auto",
-                height: 400,
+                height: 400, // Fixed height for all cards
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -194,8 +163,9 @@ const FilterAndPCSection = () => {
                 height="200"
                 image={pc.image}
                 alt={pc.title}
+                sx={{ objectFit: "contain" }} // Ensure consistent image rendering
               />
-              <CardContent>
+              <CardContent sx={{ flexGrow: 1 }}>
                 <Typography
                   gutterBottom
                   variant="h5"
@@ -204,92 +174,126 @@ const FilterAndPCSection = () => {
                 >
                   {pc.title}
                 </Typography>
-                <Typography variant="body2" sx={{ mb: 2, color: "#fff" }}>
-                  {pc.specs}
+                <Typography variant="body2">{pc.specs}</Typography>
+                <Typography variant="h6" sx={{ mt: 1, color: "#FFD700" }}>
+                  ₹{pc.price.toLocaleString("en-IN")}
                 </Typography>
-                <Typography
-                  variant="h6"
+              </CardContent>
+              <Box sx={{ textAlign: "center", mb: 1 }}>
+                <Button
+                  variant="outlined"
                   sx={{
                     color: "#FFD700",
-                    fontWeight: "bold",
-                    mb: 2,
+                    borderColor: "#FFD700",
+                    "&:hover": {
+                      backgroundColor: "#FFD700",
+                      color: "#000",
+                    },
                   }}
-                >
-                  ₹{pc.price.toLocaleString()}
-                </Typography>
-                <Button
-                  variant="contained"
-                  fullWidth
                   onClick={() => handleOpenModal(pc)}
-                  sx={{
-                    backgroundColor: "#FFD700",
-                    color: "#000",
-                    fontWeight: "bold",
-                    "&:hover": { backgroundColor: "#FFC300" },
-                  }}
                 >
-                  View More Details
+                  View Details
                 </Button>
-              </CardContent>
+              </Box>
             </Card>
           ))
         ) : (
           <Typography
-            variant="h6"
             sx={{
-              textAlign: "center",
-              gridColumn: "1/-1",
-              padding: "20px",
               color: "#FFD700",
+              fontWeight: "bold",
+              textAlign: "center",
+              mt: 5,
+              gridColumn: "1/-1",
             }}
           >
-            No PCs match the selected filters.
+            No PCs found matching the criteria.
           </Typography>
         )}
       </Box>
 
-      {/* Modal for More Details */}
-      <Modal open={openModal} onClose={handleCloseModal}>
+      {/* Show More Button */}
+      {filteredPCs.length > visiblePCs && (
+        <Box sx={{ textAlign: "center", mt: 3 }}>
+          <Button
+            variant="outlined"
+            sx={{
+              color: "#FFD700",
+              borderColor: "#FFD700",
+              "&:hover": {
+                backgroundColor: "#FFD700",
+                color: "#000",
+              },
+            }}
+            onClick={handleShowMore}
+          >
+            Show More
+          </Button>
+        </Box>
+      )}
+
+      {/* Modal for Details */}
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Box
           sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
             backgroundColor: "#1a1a1a",
             color: "#fff",
-            padding: "20px",
-            borderRadius: "10px",
+            padding: "15px",
+            borderRadius: "8px",
+            width: "70%",
             maxWidth: "500px",
-            boxShadow: "0px 4px 10px rgba(255, 215, 0, 0.8)",
+            textAlign: "center",
+            boxShadow: "0px 4px 8px rgba(255, 215, 0, 0.6)",
+            border: "2px solid #FFD700",
           }}
         >
           {selectedPC && (
             <>
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{ color: "#FFD700", fontWeight: "bold", mb: 2 }}
               >
                 {selectedPC.title}
               </Typography>
-              <Typography variant="body1" sx={{ mb: 2 }}>
+              <img
+                src={selectedPC.image}
+                alt={selectedPC.title}
+                style={{
+                  width: "100%",
+                  maxWidth: "350px",
+                  margin: "auto",
+                  borderRadius: "8px",
+                }}
+              />
+              <Typography variant="h6" sx={{ mt: 2 }}>
+                {selectedPC.specs}
+              </Typography>
+              <Typography variant="body1" sx={{ mt: 2 }}>
                 {selectedPC.details}
               </Typography>
-              <Typography variant="body2" sx={{ mb: 2 }}>
-                Specs: {selectedPC.specs}
-              </Typography>
-              <Typography variant="h6" sx={{ color: "#FFD700", mb: 2 }}>
-                Price: ₹{selectedPC.price.toLocaleString()}
+              <Typography
+                variant="h5"
+                sx={{ mt: 2, color: "#FFD700", fontWeight: "bold" }}
+              >
+                ₹{selectedPC.price.toLocaleString("en-IN")}
               </Typography>
               <Button
-                onClick={handleCloseModal}
                 variant="contained"
                 sx={{
                   backgroundColor: "#FFD700",
                   color: "#000",
                   fontWeight: "bold",
-                  "&:hover": { backgroundColor: "#FFC300" },
+                  mt: 3,
                 }}
+                onClick={handleCloseModal}
               >
                 Close
               </Button>
