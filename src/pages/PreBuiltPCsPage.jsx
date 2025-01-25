@@ -11,7 +11,6 @@ const PreBuiltPCsPage = () => {
       <HeroSection2 />
       <CategoryHighlights />
       <FilterAndPCSection />
-      <ComparisonHelper />
       <SupportSection />
     </div>
   );
