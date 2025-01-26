@@ -1,41 +1,36 @@
 import React, { useState } from 'react';
-import { Box, Container, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Button, Grid, Divider, IconButton } from '@mui/material';
+import { Box, Container, Typography, TextField, Button, Grid, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 const FormWrapper = styled(Box)(({ theme }) => ({
-  backgroundColor: '#333333',
-  padding: '40px 50px',
+  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  padding: '40px',
   borderRadius: '12px',
   boxShadow: theme.shadows[10],
   color: '#fff',
-  textAlign: 'center',
   maxWidth: '900px',
   margin: 'auto',
   border: '2px solid #FFD700',
-  marginTop: '30px',
+  marginBottom: '40px',
 }));
 
 const HeaderText = styled(Typography)(({ theme }) => ({
   color: '#FFD700',
   fontWeight: 'bold',
-  fontSize: '2.2rem',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '1.6rem',
-  },
+  fontSize: '2.4rem',
   textAlign: 'center',
   marginBottom: '20px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.8rem',
+  },
 }));
 
-const SubHeaderText = styled(Typography)(({ theme }) => ({
-  color: '#FFFFFF',
-  fontSize: '1.25rem',
-  marginBottom: '30px',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '1rem',
-  },
-  textAlign: 'center',
+const StyledContainer = styled(Container)(({ theme }) => ({
+  paddingTop: '60px',
+  paddingBottom: '60px',
+  backgroundColor: '#101010',
 }));
 
 const ContactBox = styled(Box)(({ theme }) => ({
@@ -47,156 +42,145 @@ const ContactBox = styled(Box)(({ theme }) => ({
 }));
 
 const BuildFormSection = () => {
-  const [pcPurpose, setPcPurpose] = useState('');
-  const [performance, setPerformance] = useState('');
-  const [specialFeatures, setSpecialFeatures] = useState('');
-  const [preferredBrands, setPreferredBrands] = useState('');
-  const [additionalNotes, setAdditionalNotes] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [whatsappNumber, setWhatsappNumber] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    budget: '',
+    purpose: '',
+    location: '',
+    contactNumber: '',
+    dateRequired: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form Data:', formData);
   };
 
   return (
-    <Container maxWidth="lg" sx={{ paddingTop: '80px' }}>
-      <HeaderText variant="h4">Create Your Custom PC</HeaderText>
-      <SubHeaderText variant="h5">Let us know your requirements and we'll build the perfect PC for you!</SubHeaderText>
+    <StyledContainer maxWidth="lg">
+      <HeaderText>Create Your Custom PC</HeaderText>
+      <Typography
+        variant="h6"
+        sx={{
+          color: '#FFFFFF',
+          textAlign: 'center',
+          marginBottom: '30px',
+          fontSize: '1.25rem',
+        }}
+      >
+        Fill out the form below and let us help you build your dream PC!
+      </Typography>
 
       <FormWrapper>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={4}>
-            {/* Primary Use Dropdown */}
+            {/* Name and Contact Number */}
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel sx={{ color: '#FFD700' }}>What is your primary use?</InputLabel>
-                <Select
-                  value={pcPurpose}
-                  onChange={(e) => setPcPurpose(e.target.value)}
-                  label="Primary Use"
-                  sx={{
-                    backgroundColor: '#444',
-                    color: 'white',
-                    border: '1px solid #FFD700',
-                    '& .MuiInputLabel-root': { color: '#FFD700' },
-                    '& .MuiSelect-root': { padding: '12px 15px' },
-                  }}
-                >
-                  <MenuItem value="Gaming">Gaming</MenuItem>
-                  <MenuItem value="Workstation">Workstation</MenuItem>
-                  <MenuItem value="Content Creation">Content Creation</MenuItem>
-                  <MenuItem value="General Use">General Use</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-
-            {/* Performance Level Dropdown */}
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel sx={{ color: '#FFD700' }}>Performance Level</InputLabel>
-                <Select
-                  value={performance}
-                  onChange={(e) => setPerformance(e.target.value)}
-                  label="Performance Level"
-                  sx={{
-                    backgroundColor: '#444',
-                    color: 'white',
-                    border: '1px solid #FFD700',
-                    '& .MuiInputLabel-root': { color: '#FFD700' },
-                    '& .MuiSelect-root': { padding: '12px 15px' },
-                  }}
-                >
-                  <MenuItem value="High Performance">High Performance</MenuItem>
-                  <MenuItem value="Medium Performance">Medium Performance</MenuItem>
-                  <MenuItem value="Budget Friendly">Budget Friendly</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-
-            {/* Special Features Dropdown */}
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel sx={{ color: '#FFD700' }}>Special Features</InputLabel>
-                <Select
-                  value={specialFeatures}
-                  onChange={(e) => setSpecialFeatures(e.target.value)}
-                  label="Special Features"
-                  sx={{
-                    backgroundColor: '#444',
-                    color: 'white',
-                    border: '1px solid #FFD700',
-                    '& .MuiInputLabel-root': { color: '#FFD700' },
-                    '& .MuiSelect-root': { padding: '12px 15px' },
-                  }}
-                >
-                  <MenuItem value="Customizable RGB">Customizable RGB</MenuItem>
-                  <MenuItem value="Silent Operation">Silent Operation</MenuItem>
-                  <MenuItem value="Compact Build">Compact Build</MenuItem>
-                  <MenuItem value="No Preference">No Preference</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-
-            {/* Preferred Brands Dropdown */}
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <InputLabel sx={{ color: '#FFD700' }}>Preferred Brands (Optional)</InputLabel>
-                <Select
-                  value={preferredBrands}
-                  onChange={(e) => setPreferredBrands(e.target.value)}
-                  label="Preferred Brands"
-                  sx={{
-                    backgroundColor: '#444',
-                    color: 'white',
-                    border: '1px solid #FFD700',
-                    '& .MuiInputLabel-root': { color: '#FFD700' },
-                    '& .MuiSelect-root': { padding: '12px 15px' },
-                  }}
-                >
-                  <MenuItem value="Intel">Intel</MenuItem>
-                  <MenuItem value="AMD">AMD</MenuItem>
-                  <MenuItem value="Nvidia">Nvidia</MenuItem>
-                  <MenuItem value="No Preference">No Preference</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-
-            {/* Additional Notes Text Field */}
-            <Grid item xs={12}>
               <TextField
-                label="Additional Notes"
-                multiline
-                rows={4}
+                name="name"
+                label="Your Name"
                 variant="outlined"
                 fullWidth
-                value={additionalNotes}
-                onChange={(e) => setAdditionalNotes(e.target.value)}
-                sx={{ marginTop: '20px', color: 'white' }}
+                value={formData.name}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="contactNumber"
+                label="Contact Number"
+                variant="outlined"
+                fullWidth
+                value={formData.contactNumber}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
               />
             </Grid>
 
-            {/* Mobile Number Input */}
+            {/* Budget and Location */}
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Mobile Number"
+                name="budget"
+                label="Budget"
                 variant="outlined"
                 fullWidth
-                value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value)}
-                sx={{ marginTop: '20px', color: 'white' }}
+                value={formData.budget}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="location"
+                label="Location"
+                variant="outlined"
+                fullWidth
+                value={formData.location}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
               />
             </Grid>
 
-            {/* WhatsApp Number Input */}
-            <Grid item xs={12} sm={6}>
+            {/* Purpose */}
+            <Grid item xs={12}>
               <TextField
-                label="WhatsApp Number"
+                name="purpose"
+                label="Purpose"
                 variant="outlined"
                 fullWidth
-                value={whatsappNumber}
-                onChange={(e) => setWhatsappNumber(e.target.value)}
-                sx={{ marginTop: '20px', color: 'white' }}
+                value={formData.purpose}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
+                placeholder="Gaming, Workstation, Content Creation, etc."
+              />
+            </Grid>
+
+            {/* Date Required */}
+            <Grid item xs={12}>
+              <TextField
+                name="dateRequired"
+                label="Date Required"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                fullWidth
+                value={formData.dateRequired}
+                onChange={handleChange}
+                sx={{
+                  backgroundColor: '#333',
+                  border: '1px solid #FFD700',
+                  input: { color: 'white' },
+                  label: { color: '#FFD700' },
+                }}
               />
             </Grid>
 
@@ -205,11 +189,11 @@ const BuildFormSection = () => {
               <Button
                 type="submit"
                 variant="contained"
+                fullWidth
                 sx={{
                   backgroundColor: '#FFD700',
                   color: '#101010',
                   padding: '14px 40px',
-                  marginTop: '30px',
                   '&:hover': {
                     backgroundColor: '#e6c200',
                   },
@@ -245,9 +229,7 @@ const BuildFormSection = () => {
           <WhatsAppIcon sx={{ color: 'white' }} />
         </IconButton>
       </ContactBox>
-
-      <Divider sx={{ margin: '40px 0', backgroundColor: '#FFD700' }} />
-    </Container>
+    </StyledContainer>
   );
 };
 

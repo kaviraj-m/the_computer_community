@@ -1,41 +1,31 @@
 import React from "react";
-import { Box, Typography, Grid, Button } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import GamingImage from "../assets/gaming.png";
 import WorkstationImage from "../assets/workstation.png";
 import BudgetImage from "../assets/budget.jpg";
-import '@fontsource/libre-baskerville';
-import '@fontsource/manrope';
+import VideoEditingImage from "../assets/video_editing.png";
+import ArchitectureImage from "../assets/architecture.png";
+import AIMLImage from "../assets/ai_ml.webp";
+import "@fontsource/libre-baskerville";
+import "@fontsource/manrope";
 
-
-const CategoryCard = styled(Box)(({ theme }) => ({
-  background: "rgba(255, 255, 255, 0.1)",
+const CategoryCard = styled(motion.div)(({ theme }) => ({
+  background: "rgba(255, 255, 255, 0.05)",
   borderRadius: "16px",
   overflow: "hidden",
   backdropFilter: "blur(12px)",
   boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
+  cursor: "pointer",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   "&:hover": {
     transform: "scale(1.05)",
-    boxShadow: "0px 12px 30px rgba(0, 0, 0, 0.3)",
+    boxShadow: "0px 12px 30px rgba(255, 215, 0, 0.4)",
   },
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  background: "linear-gradient(45deg, #FFD700, #FF8C00)",
-  color: "#000",
-  fontWeight: "bold",
-  padding: "12px 24px",
-  borderRadius: "50px",
-  fontSize: "1rem",
-  textTransform: "none",
-  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-  transition: "all 0.3s ease",
-  "&:hover": {
-    background: "linear-gradient(45deg, #FF8C00, #FFD700)",
-    transform: "scale(1.05)",
-    boxShadow: "0 6px 16px rgba(0, 0, 0, 0.4)",
+  "&:focus-within": {
+    outline: "2px solid #FFD700",
   },
 }));
 
@@ -44,63 +34,100 @@ const CategoriesSection = () => {
     {
       title: "Gaming PCs",
       description: "High-performance systems designed for gaming enthusiasts.",
-      link: "/gaming",
+      link: "/prebuilt/gaming",
       image: GamingImage,
     },
     {
       title: "Workstations",
       description: "Powerful machines for productivity and content creation.",
-      link: "/workstation",
+      link: "/prebuilt/workstation",
       image: WorkstationImage,
     },
     {
       title: "Budget PCs",
       description: "Affordable yet powerful PCs for everyday use.",
-      link: "/budget",
+      link: "/prebuilt/budget",
       image: BudgetImage,
+    },
+    {
+      title: "Video Editing",
+      description: "Specialized systems for smooth video rendering and editing.",
+      link: "/prebuilt/video-editing",
+      image: VideoEditingImage,
+    },
+    {
+      title: "Architecture",
+      description: "High-performance PCs for architecture and 3D modeling.",
+      link: "/prebuilt/architecture",
+      image: ArchitectureImage,
+    },
+    {
+      title: "AI / ML",
+      description: "Advanced systems optimized for AI and machine learning tasks.",
+      link: "/prebuilt/ai-ml",
+      image: AIMLImage,
     },
   ];
 
   return (
     <Box
       sx={{
-        backgroundColor: "black", 
+        backgroundColor: "black",
         color: "#fff",
-        py: 12,
+        py: 10,
         px: 4,
         textAlign: "center",
         maxWidth: "1400px",
         margin: "0 auto",
       }}
     >
+      {/* Section Title */}
       <Typography
         variant="h3"
         sx={{
-          fontFamily: "'Libre Baskerville', serif", 
+          fontFamily: "'Libre Baskerville', serif",
           color: "#FFD700",
-          mb: 6,
+          mb: 8,
           fontWeight: "700",
           textShadow: "0px 4px 12px rgba(255, 215, 0, 0.5)",
         }}
       >
-        Explore Our PC Categories
+        We Provide 100% Sensible PC Builds
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          fontFamily: "'Manrope', sans-serif",
+          color: "#ccc",
+          mb: 6,
+          lineHeight: 1.8,
+        }}
+      >
+        Discover top-notch PC solutions tailored for Gaming, VFX, AI, Architects, 
+        and Productivity. Explore our categories to find your perfect match.
       </Typography>
 
+      {/* Category Cards */}
       <Grid container spacing={6} justifyContent="center">
         {categories.map((category, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
+            <Link
+              to={category.link}
+              style={{ textDecoration: "none" }}
+              aria-label={`Navigate to ${category.title}`}
             >
-              <CategoryCard>
+              <CategoryCard
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+              >
+                {/* Image Section */}
                 <Box
                   sx={{
                     position: "relative",
                     height: "250px",
                     overflow: "hidden",
-                    borderRadius: "16px",
+                    borderRadius: "16px 16px 0 0",
                   }}
                 >
                   <motion.img
@@ -114,52 +141,41 @@ const CategoriesSection = () => {
                     }}
                     whileHover={{ scale: 1.1 }}
                   />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      background: "linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7))",
-                      zIndex: 1,
-                    }}
-                  />
+                </Box>
+
+                {/* Content Section */}
+                <Box
+                  sx={{
+                    padding: "20px",
+                    textAlign: "center",
+                    background: "rgba(0, 0, 0, 0.8)",
+                    borderRadius: "0 0 16px 16px",
+                  }}
+                >
                   <Typography
                     variant="h5"
                     sx={{
-                      position: "absolute",
-                      bottom: "20px",
-                      left: "20px",
-                      zIndex: 2,
+                      fontFamily: "'Manrope', sans-serif",
                       color: "#FFD700",
                       fontWeight: "700",
-                      textShadow: "0px 4px 8px rgba(0, 0, 0, 0.7)",
+                      mb: 1,
                     }}
                   >
                     {category.title}
                   </Typography>
-                </Box>
-                <Box sx={{ padding: "20px", textAlign: "center" }}>
                   <Typography
-                    variant="body1"
+                    variant="body2"
                     sx={{
-                      fontFamily: "'Manrope', sans-serif", 
+                      fontFamily: "'Manrope', sans-serif",
                       color: "#ccc",
                       lineHeight: 1.6,
-                      mb: 3,
                     }}
                   >
                     {category.description}
                   </Typography>
-                  <StyledButton
-                    onClick={() => (window.location.href = category.link)}
-                  >
-                    Learn More
-                  </StyledButton>
                 </Box>
               </CategoryCard>
-            </motion.div>
+            </Link>
           </Grid>
         ))}
       </Grid>

@@ -2,7 +2,6 @@ import React from 'react';
 import HeroSection2 from '../components/HeroSection2';
 import CategoryHighlights from '../components/CategoryHighlights';
 import FilterAndPCSection from '../components/FilterAndPCSection';
-import ComparisonHelper from '../components/ComparisonHelper';
 import SupportSection from '../components/SupportSection';
 
 const PreBuiltPCsPage = () => {

@@ -1,134 +1,115 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Button, Link, IconButton } from '@mui/material';
+import { Box, Container, Typography, Grid, Link } from '@mui/material';
 import { styled } from '@mui/system';
-import { FaDonate } from 'react-icons/fa';  
+import BlueCrossLogo from "../assets/bluecross_logo.png"; 
+import SankalpTaruLogo from "../assets/sankalptaru_logo.webp"; 
 
-const DonationSectionWrapper = styled(Box)(({ theme }) => ({
-  background: 'black',
+const SectionWrapper = styled(Box)(({ theme }) => ({
+  background: '#000000',
   color: '#fff',
-  padding: '80px 0',
+  padding: '80px 20px',
   textAlign: 'center',
   marginTop: '40px',
   borderTop: '4px solid #FFD700',
   borderRadius: '10px',
   boxShadow: '0px 6px 20px rgba(0,0,0,0.5)',
   [theme.breakpoints.down('sm')]: {
-    padding: '60px 20px',
+    padding: '60px 15px',
   },
 }));
 
-const DonationButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#FFD700',
-  color: '#101010',
-  fontSize: '16px',
-  padding: '14px 50px',
-  textTransform: 'uppercase',
-  fontWeight: '600',
-  borderRadius: '50px',
-  '&:hover': {
-    backgroundColor: '#fff',
-    color: '#101010',
-    boxShadow: '0px 8px 25px rgba(0, 0, 0, 0.3)',
-  },
-  transition: 'all 0.3s ease',
-}));
-
-const SectionTitle = styled(Typography)(({ theme }) => ({
+const Title = styled(Typography)(({ theme }) => ({
   color: '#FFD700',
   fontWeight: 'bold',
-  marginBottom: '35px',
-  fontSize: '36px',
+  fontSize: '32px',
+  marginBottom: '20px',
   textTransform: 'uppercase',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '28px',
+    fontSize: '24px',
   },
 }));
 
-const DonationDescription = styled(Typography)(({ theme }) => ({
-  color: '#fff',
-  marginBottom: '40px',
+const Description = styled(Typography)(({ theme }) => ({
   fontSize: '18px',
   lineHeight: '1.8',
+  marginBottom: '40px',
   [theme.breakpoints.down('sm')]: {
     fontSize: '16px',
   },
 }));
 
-const IconBox = styled(Box)(({ theme }) => ({
-  margin: '10px 0',
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '15px',
+const CauseBox = styled(Box)(({ theme }) => ({
+  textAlign: 'center',
+  padding: '20px',
+  border: '1px solid #FFD700',
+  borderRadius: '10px',
+  backgroundColor: '#1a1a1a',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'scale(1.05)',
+    boxShadow: '0px 8px 25px rgba(255, 215, 0, 0.3)',
+  },
+}));
+
+const Logo = styled('img')({
+  width: '120px',
+  height: '120px',
+  marginBottom: '15px',
+});
+
+const CauseTitle = styled(Typography)(({ theme }) => ({
+  color: '#FFD700',
+  fontWeight: 'bold',
+  fontSize: '20px',
+  marginBottom: '10px',
+}));
+
+const CauseDescription = styled(Typography)(({ theme }) => ({
+  fontSize: '16px',
+  lineHeight: '1.6',
+  marginBottom: '15px',
+  color: '#fff',
 }));
 
 const DonationSection = () => {
   return (
-    <DonationSectionWrapper>
-      <Container maxWidth="lg">
-        <SectionTitle variant="h4">
-          Support a Cause and Make a Lasting Difference
-        </SectionTitle>
-        <DonationDescription variant="body1">
-          A portion of our revenue is dedicated to making a positive impact. Your contribution helps us support two incredible causes focused on animal welfare and environmental sustainability.
-        </DonationDescription>
+    <SectionWrapper>
+      <Container maxWidth="md">
+        <Title>Support a Cause and Make a Lasting Difference</Title>
+        <Description>
+          A portion of our revenue is dedicated to making a positive impact. We proudly support
+          <strong> Blue Cross of India</strong> and <strong>SankalpTaru</strong> for animal welfare and environmental sustainability.
+        </Description>
 
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
-            <Typography variant="h6" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '20px' }}>
-              Blue Cross of India
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#fff', marginBottom: '20px' }}>
-              Blue Cross of India is dedicated to rescuing and caring for animals. With your support, we can provide shelter, medical care, and help animals in need.
-            </Typography>
-            <DonationButton component={Link} href="https://bluecross.org.in" target="_blank">
-              Donate to Blue Cross
-            </DonationButton>
+            <CauseBox>
+              <Logo src={BlueCrossLogo} alt="Blue Cross of India Logo" />
+              <CauseTitle>Blue Cross of India</CauseTitle>
+              <CauseDescription>
+                Dedicated to rescuing and caring for animals, providing shelter, medical care, and support for animals in need.
+              </CauseDescription>
+              <Link href="https://bluecross.org.in" target="_blank" style={{ color: '#FFD700', fontWeight: 'bold', textDecoration: 'none' }}>
+                Learn More
+              </Link>
+            </CauseBox>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Typography variant="h6" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '20px' }}>
-              SankalpTaru
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#fff', marginBottom: '20px' }}>
-              SankalpTaru focuses on reforestation, planting trees to combat climate change. Your donation will help plant trees for a greener planet.
-            </Typography>
-            <DonationButton component={Link} href="https://sankalptaru.org" target="_blank">
-              Donate to SankalpTaru
-            </DonationButton>
+            <CauseBox>
+              <Logo src={SankalpTaruLogo} alt="SankalpTaru Logo" />
+              <CauseTitle>SankalpTaru</CauseTitle>
+              <CauseDescription>
+                Focused on reforestation and combating climate change by planting trees and creating a greener planet.
+              </CauseDescription>
+              <Link href="https://sankalptaru.org" target="_blank" style={{ color: '#FFD700', fontWeight: 'bold', textDecoration: 'none' }}>
+                Learn More
+              </Link>
+            </CauseBox>
           </Grid>
         </Grid>
-
-        <Box sx={{ marginTop: '50px' }}>
-          <Typography variant="h5" sx={{ color: '#FFD700', fontWeight: 'bold', marginBottom: '15px' }}>
-            Join Us in Creating a Better Future
-          </Typography>
-          <Typography variant="body2" sx={{ color: '#fff', marginBottom: '30px' }}>
-            Every contribution, no matter how small, makes a difference. Together, we can create a better world for both animals and the environment.
-          </Typography>
-          <DonationButton component={Link} href="https://sankalptaru.org" target="_blank">
-            Contribute Now
-          </DonationButton>
-
-          <IconBox>
-            <IconButton
-              sx={{
-                backgroundColor: '#FFD700',
-                padding: '10px',
-                borderRadius: '50%',
-                '&:hover': {
-                  backgroundColor: '#fff',
-                },
-              }}
-              component={Link}
-              href="https://www.youtube.com/channel/UCSu_M1sBR9M-gBSTFVXIY6w"
-              target="_blank"
-            >
-              <FaDonate color="#101010" size={28} />
-            </IconButton>
-          </IconBox>
-        </Box>
       </Container>
-    </DonationSectionWrapper>
+    </SectionWrapper>
   );
 };
 
