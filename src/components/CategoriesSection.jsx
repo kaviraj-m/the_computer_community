@@ -34,37 +34,37 @@ const CategoriesSection = () => {
     {
       title: "Gaming PCs",
       description: "High-performance systems designed for gaming enthusiasts.",
-      link: "/prebuilt/gaming",
+      link: "/prebuilt",
       image: GamingImage,
     },
     {
       title: "Workstations",
       description: "Powerful machines for productivity and content creation.",
-      link: "/prebuilt/workstation",
+      link: "/prebuilt",
       image: WorkstationImage,
     },
     {
       title: "Budget PCs",
       description: "Affordable yet powerful PCs for everyday use.",
-      link: "/prebuilt/budget",
+      link: "/prebuilt",
       image: BudgetImage,
     },
     {
       title: "Video Editing",
       description: "Specialized systems for smooth video rendering and editing.",
-      link: "/prebuilt/video-editing",
+      link: "/prebuilt",
       image: VideoEditingImage,
     },
     {
       title: "Architecture",
       description: "High-performance PCs for architecture and 3D modeling.",
-      link: "/prebuilt/architecture",
+      link: "/prebuilt",
       image: ArchitectureImage,
     },
     {
       title: "AI / ML",
       description: "Advanced systems optimized for AI and machine learning tasks.",
-      link: "/prebuilt/ai-ml",
+      link: "/prebuilt",
       image: AIMLImage,
     },
   ];
