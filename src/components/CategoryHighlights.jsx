@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import { Grid, Card, CardContent, Typography, CardMedia, Box, Container } from '@mui/material';
 import { styled } from '@mui/system';
 import GamingImage from "../assets/gaming.png";
 import WorkstationImage from "../assets/workstation.png";
@@ -44,7 +44,7 @@ const CardOverlay = styled('div')({
   background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%)',
   zIndex: 1,
 });
- 
+
 const TextContent = styled(CardContent)({
   position: 'absolute',
   bottom: '20px',
@@ -57,53 +57,55 @@ const TextContent = styled(CardContent)({
 const CategoryHighlights = () => {
   return (
     <Box sx={{ backgroundColor: '#000', padding: '60px 20px' }}>
-      <Typography
-        variant="h4"
-        align="center"
-        sx={{
-          mb: 4,
-          color: '#ffd700',
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          letterSpacing: '2px',
-        }}
-      >
-        Discover Our Categories
-      </Typography>
-      <Grid container spacing={4}>
-        {categories.map((category, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <StyledCard>
-              <CardMedia
-                component="img"
-                height="300"
-                image={category.image}
-                alt={`${category.title} image`}
-                sx={{
-                  filter: 'brightness(0.9)',
-                  transition: 'transform 0.3s, opacity 0.3s',
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                    opacity: 0.9,
-                  },
-                }}
-              />
-              <CardOverlay />
-              <TextContent>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 'bold', color: '#ffd700', mb: 1, textTransform: 'uppercase' }}
-                >
-                  {category.title}
-                </Typography>
-                <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
-                  {category.description}
-                </Typography>
-              </TextContent>
-            </StyledCard>
-          </Grid>
-        ))}
-      </Grid>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{
+            mb: 4,
+            color: '#ffd700',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+          }}
+        >
+          Discover Our Categories
+        </Typography>
+        <Grid container spacing={4}>
+          {categories.map((category, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <StyledCard>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={category.image}
+                  alt={`${category.title} image`}
+                  sx={{
+                    filter: 'brightness(0.9)',
+                    transition: 'transform 0.3s, opacity 0.3s',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                      opacity: 0.9,
+                    },
+                  }}
+                />
+                <CardOverlay />
+                <TextContent>
+                  <Typography
+                    variant="h5"
+                    sx={{ fontWeight: 'bold', color: '#ffd700', mb: 1, textTransform: 'uppercase' }}
+                  >
+                    {category.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
+                    {category.description}
+                  </Typography>
+                </TextContent>
+              </StyledCard>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </Box>
   );
 };
