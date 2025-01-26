@@ -44,7 +44,7 @@ const CardOverlay = styled('div')({
   background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%)',
   zIndex: 1,
 });
-
+ 
 const TextContent = styled(CardContent)({
   position: 'absolute',
   bottom: '20px',
